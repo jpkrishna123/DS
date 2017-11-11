@@ -1,14 +1,14 @@
 package com.krishtech.str;
 
 /**
- * convert the given string to int value
+ * convert the given int to String value
  * 
  * @author jpkrishna
  *
  */
 public class IntToString {
 	
-	private static String convertToInt(int v) {
+	private static String convertTString(int v) {
 		boolean isNegative = v < 0 ? true : false;
 		StringBuffer buffer = new StringBuffer();
 		
@@ -24,6 +24,6 @@ public class IntToString {
 	}
 	
 	public static void main(String []args) {
-		System.out.println("Converted to String :" + convertToInt(234556));
+		System.out.println("Converted to String :" + convertTString(234556));
 	}
 }
