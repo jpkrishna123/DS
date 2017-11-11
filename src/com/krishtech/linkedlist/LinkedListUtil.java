@@ -13,7 +13,7 @@ public class LinkedListUtil {
 	@SuppressWarnings("rawtypes")
 	public static void display(final ListNode node) {
 		ListNode p = node;
-		
+		 
 		while(p != null) {
 			System.out.print(" " + p.getData() + " -> ");
 			p = p.getNext();
@@ -21,7 +21,7 @@ public class LinkedListUtil {
 	}
 	
 	@SuppressWarnings("rawtypes")
-	public static ListNode append(final ListNode<Integer> root, int v) {
+	public static ListNode<Integer> append(final ListNode<Integer> root, int v) {
 		ListNode<Integer> n = root;
 		ListNode<Integer> p = root;
 		
@@ -33,7 +33,8 @@ public class LinkedListUtil {
 		ListNode<Integer> node = new ListNode<Integer>(v);
 		p.setNext(node);
 		
-		return root;
+		return node;
+		
 	}
 	
 	@SuppressWarnings("rawtypes")

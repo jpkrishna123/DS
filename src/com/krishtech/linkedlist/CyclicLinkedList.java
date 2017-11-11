@@ -1,63 +1,45 @@
 package com.krishtech.linkedlist;
 
 
+/**
+ * this program will check the given linked list is cyclic?
+ * 
+ * @author jpkrishna
+ *
+ */
 public class CyclicLinkedList {
 
-	static class Node {
-		int v;
-		Node next;
-		
-		public Node(int v) {
-			this.v = v;
-		}
-	}
-	
-	private static Node getCyclicNode(Node root) {
+	private static ListNode<Integer> getCyclicNode(ListNode<Integer> root) {
 		boolean isCyclic = false;
 		
-		
-		Node n1 = root; // slow moving
-		Node n2 = root; // fast moving
-		while(n1 != null && n1.next != null && 
-				n2 != null && n2.next != null) {
-			n1 = n1.next;
-			n2 = n2.next.next;
+		ListNode<Integer> n1 = root; // slow moving
+		ListNode<Integer> n2 = root; // fast moving
+		while(n1 != null && n1.getNext() != null && 
+				n2 != null && n2.getNext() != null) {
+			n1 = n1.getNext();
+			n2 = n2.getNext().getNext();
 			if(n1 == n2) {
 				isCyclic = true;
 				break;
 			}
 		}
 		
-		if(n2.next == null) {
+		if(n2.getNext() == null) {
 			return null;
 		}
 		
-		n1 = root;
-		while(n1 != n2) {
-			n1 = n1.next;
-			n2 = n2.next;
+		if(isCyclic) {
+			n1 = root;
+			while(n1 != n2) {
+				n1 = n1.getNext();
+				n2 = n2.getNext();
+			}
 		}
 		
 		return n2;
 	}
 	
-	private static Node nthLast(Node root, int pos) {
-		Node n1 = root;
-		Node n2 = root;
-		
-		for(int i = 0; i < pos -1; i++) {
-			if(n2 == null)  return null;
-			
-			n2 = n2.next;
-		}
-		
-		while(n2.next != null) {
-			n1 = n1.next;
-			n2 = n2.next;
-		}
-		
-		return n1;
-	}
+	
 	
 	private static Node reverse(Node root) {
 		if(root == null) return null;
@@ -99,7 +81,7 @@ public class CyclicLinkedList {
        int count = 0;
  
        /* Reverse first k nodes of linked list */
-       while (count < k && current != null) 
+       while (count < k && current != null)
        {
            next = current.next;
            current.next = prev;
@@ -119,22 +101,14 @@ public class CyclicLinkedList {
     }       
 	
 	public static void main(String []args) {
-		Node r = new Node(1);
-		Node n1 = new Node(2);
-		r.next = n1;
-		Node n2 = new Node(3);
-		n1.next = n2;
-		Node n3 = new Node(4);
-		n2.next = n3;
-		Node n4 = new Node(5);
-		n3.next = n4;
-		Node n5 = new Node(6);
-		n4.next = n5;
-		//n5.next = n3;
+		ListNode<Integer> r = new ListNode<>(1);
+		LinkedListUtil.append(r, 2);
+		LinkedListUtil.append(r, 3);
+		ListNode<Integer> n4 = LinkedListUtil.append(r, 4);
+		LinkedListUtil.append(r, 5);
+		ListNode<Integer> n6 = LinkedListUtil.append(r, 6);
+		n6.setNext(n4);
 		
-		Node head = reverse(r);
-		System.out.println(head.v);
-		//Node n = nthLast(r, 2);
-		//System.out.println("isCyclic : " + n.v);
+		System.out.println("Cyclic Node : " + getCyclicNode(r));
 	}
 }

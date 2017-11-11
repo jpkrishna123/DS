@@ -1,80 +1,54 @@
 package com.krishtech.linkedlist;
 
+/** 
+ * here merge two linked list into single linked list
+ *  
+ * @author jpkrishna
+ *
+ */
 public class MergeLinkedList {
 	
-	static class Node {
-		int v;
-		Node next;
+	private static ListNode<Integer> mergeLinkedList(ListNode<Integer> head1, ListNode<Integer> head2) {
+		if(head1 == null) return head2;
+		if(head2 == null) return head1;
 		
-		public Node(int v) {
-			this.v = v;
-		}
-	}
-	
-	private static Node mergeLinkedList(Node p, Node q) {
-		Node newHead;
-		Node sorting;
-		if(p == null) return q;
-		if(q == null) return p;
+		ListNode<Integer> dummyHead = new ListNode<>();
+		ListNode<Integer> currentNode = dummyHead;
+		ListNode<Integer> p1 = head1, p2 = head2;
 		
-		if(p.v < q.v) {
-			sorting = p;
-			p = sorting.next;
-		}else {
-			sorting = q;
-			q = sorting.next;
-		}
-		
-		newHead = sorting;
-		while(p != null && q != null) {
-			if(p.v < q.v) {
-				sorting.next = p;
-				sorting = p;
-				p = sorting.next;
-			}else {
-				sorting.next = q;
-				sorting = q;
-				q = sorting.next;
-			}
-		}
-		
-		if(p == null) sorting.next = q;
-		if(q == null) sorting.next = p;
-		
-		return newHead;
-	}
-	
-	private static void display(Node node) {
-		Node p = node;
-		
-		while(p != null) {
-			System.out.print(" " + p.v + " -> ");
-			p = p.next;
-		}
+		 while(p1 != null && p2 != null) {
+			 if(p1.getData() < p2.getData()) {
+				 currentNode.setNext(p1);
+				 p1 = p1.getNext();
+			 }else {
+				 currentNode.setNext(p2);
+				 p2 = p2.getNext();
+			 }
+			 
+			 currentNode = currentNode.getNext();
+		 }
+		 
+		 currentNode.setNext(p1 != null ? p1 : p2);
+		 
+		 return dummyHead.getNext();
 	}
 	
 	public static void main(String []args) {
-		Node r = new Node(1);
-		Node n1 = new Node(3);
-		r.next = n1;
-		Node n2 = new Node(5);
-		n1.next = n2;
-		Node n3 = new Node(7);
-		n2.next = n3;
-		Node n4 = new Node(9);
-	    n3.next = n4;
+		// here prepare 1st linked list
+		ListNode<Integer> head1 = new ListNode<>(5);
+		LinkedListUtil.append(head1, 10);
+		LinkedListUtil.append(head1, 15);
 		
-	    
-	    Node r1 = new Node(2);
-		Node rn1 = new Node(4);
-		r1.next = rn1;
-		Node rn2 = new Node(6);
-		rn1.next = rn2;
+		// here prepare 2nd linked list
+		ListNode<Integer> head2 = new ListNode<>(2);
+		LinkedListUtil.append(head2, 7);
+		LinkedListUtil.append(head2, 20);
 		
-		Node head = mergeLinkedList(r, r1);
-	    display(head);
-		
+		ListNode<Integer> mergeHead = mergeLinkedList(head1, head2);
+		while(mergeHead != null) {
+			System.out.println(mergeHead.getData());
+			mergeHead = mergeHead.getNext();
+		}
 	}
-	
-	
+
 }
