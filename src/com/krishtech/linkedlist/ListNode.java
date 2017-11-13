@@ -8,8 +8,8 @@ package com.krishtech.linkedlist;
  *
  */
 public class ListNode<T> {
-	private T data;
-	private ListNode<T> next;
+	public T data;
+	public ListNode<T> next;
 	
 	public ListNode() {
 	}
