@@ -22,16 +22,16 @@ String
 
 Linked List
 ===========
-    - CountLinkedList - count no of elements in linked list
-    - CyclicLinkedList - this program will check the given linked list is cyclic?
-    - MergeLinkedList - this program will merge two linked list into single linked list
-    - NthLastNode - this program will get the nth linked list node
-    - ReverseLinkedList - this program used to reverse the linked list
+   - CountLinkedList - count no of elements in linked list
+   - CyclicLinkedList - this program will check the given linked list is cyclic?
+   - MergeLinkedList - this program will merge two linked list into single linked list
+   - NthLastNode - this program will get the nth linked list node
+   - ReverseLinkedList - this program used to reverse the linked list
 
 Tree
 ====
-    - BalancedTree - this program will the tree is balanced
-    - TreeHeight - get tree height
-    - TreeLevelOrderDisplay - Traversal BST / Level order display
-    - TreeTraversal - Inorder, Preorder and post order tree traversal 
+   - BalancedTree - this program will the tree is balanced
+   - TreeHeight - get tree height
+   - TreeLevelOrderDisplay - Traversal BST / Level order display
+   - TreeTraversal - Inorder, Preorder and post order tree traversal 
 
